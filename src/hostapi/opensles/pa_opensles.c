@@ -481,7 +481,8 @@ static PaError IsFormatSupported( struct PaUtilHostApiRepresentation *hostApi,
             if( androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_NONE
                 && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_GENERIC
                 && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_CAMCORDER
-                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION )
+                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION 
+                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_COMMUNICATION)
                 return paIncompatibleHostApiSpecificStreamInfo;
 #endif
         }
@@ -609,7 +610,7 @@ static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
     PaSampleFormat hostInputSampleFormat, hostOutputSampleFormat;
 #if __ANDROID_API__ >= 14
     SLint32 androidPlaybackStreamType = SL_ANDROID_STREAM_VOICE;
-    SLint32 androidRecordingPreset = SL_ANDROID_RECORDING_PRESET_GENERIC;
+    SLint32 androidRecordingPreset = SL_ANDROID_RECORDING_PRESET_VOICE_COMMUNICATION;
 #else
     SLint32 androidPlaybackStreamType = -1;
     SLint32 androidRecordingPreset = -1;
@@ -635,7 +636,8 @@ static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
             if( androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_NONE
                 && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_GENERIC
                 && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_CAMCORDER
-                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION )
+                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_RECOGNITION 
+                && androidRecordingPreset != SL_ANDROID_RECORDING_PRESET_VOICE_COMMUNICATION)
                 return paIncompatibleHostApiSpecificStreamInfo;
 #endif
         }
