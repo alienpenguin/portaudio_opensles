@@ -608,7 +608,7 @@ static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
     PaSampleFormat inputSampleFormat, outputSampleFormat;
     PaSampleFormat hostInputSampleFormat, hostOutputSampleFormat;
 #if __ANDROID_API__ >= 14
-    SLint32 androidPlaybackStreamType = SL_ANDROID_STREAM_MEDIA;
+    SLint32 androidPlaybackStreamType = SL_ANDROID_STREAM_VOICE;
     SLint32 androidRecordingPreset = SL_ANDROID_RECORDING_PRESET_GENERIC;
 #else
     SLint32 androidPlaybackStreamType = -1;
