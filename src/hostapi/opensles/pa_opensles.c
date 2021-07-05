@@ -614,7 +614,8 @@ static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
 #if __ANDROID_API__ >= 14
     SLint32 androidPlaybackStreamType = SL_ANDROID_STREAM_VOICE;
     SLint32 androidRecordingPreset = SL_ANDROID_RECORDING_PRESET_VOICE_COMMUNICATION;
-    ALOGW("----> using PRESET_VOICE_COMMUNICATION <----")
+    ALOGW("----> using for input: PRESET_VOICE_COMMUNICATION <----")
+    ALOGW("----> using for output: STREAM VOICE <----")
 #else
     SLint32 androidPlaybackStreamType = -1;
     SLint32 androidRecordingPreset = -1;
@@ -914,7 +915,7 @@ static PaError InitializeInputStream( PaOpenslesHostApiRepresentation *openslesH
 
 #if __ANDROID_API__ >= 14
     (*stream->audioRecorder)->GetInterface( stream->audioRecorder, SL_IID_ANDROIDCONFIGURATION, &stream->inputConfigurationItf );
-    (*stream->inputConfigurationItf)->SetConfiguration( stream->inputConfigurationItf, SL_ANDROID_KEY_STREAM_TYPE,
+    (*stream->inputConfigurationItf)->SetConfiguration( stream->inputConfigurationItf, SL_ANDROID_KEY_RECORDING_PRESET,
                                                    &androidRecordingPreset, sizeof(androidRecordingPreset) );
 #endif
 
