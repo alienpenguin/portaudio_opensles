@@ -591,6 +591,9 @@ static void StreamProcessingCallback( void *userData );
 static void NotifyBufferFreeCallback( SLAndroidSimpleBufferQueueItf bufferQueueItf, void *userData );
 /* static void PrefetchStatusCallback( SLPrefetchStatusItf prefetchStatusItf, void *userData, SLuint32 event ); */
 
+#include <android/log.h>
+#define ALOG_TAG "PORTAUDIO"
+#define ALOGW(...) __android_log_print(ANDROID_LOG_WARN, ALOG_TAG, __VA_ARGS__);
 static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
                            PaStream** s,
                            const PaStreamParameters *inputParameters,
@@ -611,6 +614,7 @@ static PaError OpenStream( struct PaUtilHostApiRepresentation *hostApi,
 #if __ANDROID_API__ >= 14
     SLint32 androidPlaybackStreamType = SL_ANDROID_STREAM_VOICE;
     SLint32 androidRecordingPreset = SL_ANDROID_RECORDING_PRESET_VOICE_COMMUNICATION;
+    ALOGW("----> using PRESET_VOICE_COMMUNICATION <----")
 #else
     SLint32 androidPlaybackStreamType = -1;
     SLint32 androidRecordingPreset = -1;
